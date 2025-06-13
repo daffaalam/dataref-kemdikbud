@@ -1,0 +1,26 @@
+{
+  "name": "dataref-kemdikbud",
+  "version": "0.0.1",
+  "description": "Scraping data from https://referensi.data.kemdikbud.go.id",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "cheerio": "^1.0.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "eslint": "^9.28.0",
+    "globals": "^16.2.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3",
+    "terser": "^5.42.0"
+  }
+}
