@@ -18,9 +18,7 @@ function toCamelCase_(str) {
     .replace(/[^\w\s]/g, "")
     .trim()
     .split(/\s+/)
-    .map((word, i) =>
-      i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1),
-    )
+    .map((word, i) => (i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)))
     .join("");
 }
 
@@ -69,9 +67,7 @@ async function getTableData(url, tableSelector = "#table1", apiBase = "") {
         // Convert to number if possible
         const num = parseInt(rawText, 10);
         rowData[key] =
-          isNaN(num) ||
-            (rawText.startsWith("0") && rawText.length > 1) ||
-            key === "npsn"
+          isNaN(num) || (rawText.startsWith("0") && rawText.length > 1) || key === "npsn"
             ? rawText === ""
               ? null
               : rawText
@@ -82,9 +78,7 @@ async function getTableData(url, tableSelector = "#table1", apiBase = "") {
           const href = $(td).find("a").attr("href") || "";
           if (href && !href.startsWith("#") && !href.startsWith("javascript")) {
             ref = href.startsWith("http") ? href : `${config.BASE_URL}${href}`;
-            link = href.startsWith("http")
-              ? href.replace(config.BASE_URL, `${apiBase}`)
-              : `${apiBase}${href}`;
+            link = href.startsWith("http") ? href.replace(config.BASE_URL, `${apiBase}`) : `${apiBase}${href}`;
           }
         }
       });

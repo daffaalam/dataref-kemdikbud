@@ -7,9 +7,7 @@
 function csvExport(res, data, filename) {
   const csv = jsonToCsv(data.data);
   res.header("Content-Type", "text/csv");
-  res.attachment(
-    `referensi-data-kemdikbud-${filename}-${formatDate_(data.scrapedAt)}.csv`,
-  );
+  res.attachment(`referensi-data-kemdikbud-${filename}-${formatDate_(data.scrapedAt)}.csv`);
   return res.send(csv);
 }
 

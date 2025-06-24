@@ -23,9 +23,7 @@ async function getMenu(apiBase = "") {
   const menus = [];
 
   // Scrape all sub-menu links in "Satuan Pendidikan" dropdown
-  $(
-    "ul.nav.navbar-nav > li:nth-child(2) > ul.dropdown-menu > li:first-child > ul > li",
-  ).each((_, el) => {
+  $("ul.nav.navbar-nav > li:nth-child(2) > ul.dropdown-menu > li:first-child > ul > li").each((_, el) => {
     const atag = $(el).find("a");
     const title = atag.text().trim();
     const href = atag.attr("href") || "";
@@ -38,9 +36,7 @@ async function getMenu(apiBase = "") {
 
     if (href && !href.startsWith("#") && !href.startsWith("javascript")) {
       ref = href.startsWith("http") ? href : `${config.BASE_URL}${href}`;
-      link = href.startsWith("http")
-        ? href.replace(config.BASE_URL, `${apiBase}`)
-        : `${apiBase}${href}`;
+      link = href.startsWith("http") ? href.replace(config.BASE_URL, `${apiBase}`) : `${apiBase}${href}`;
     }
 
     menus.push({

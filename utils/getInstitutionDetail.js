@@ -16,9 +16,7 @@ function toCamelCase_(str) {
     .replace(/[^\w\s]/g, "")
     .trim()
     .split(/\s+/)
-    .map((word, i) =>
-      i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1),
-    )
+    .map((word, i) => (i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)))
     .join("");
 }
 
@@ -74,8 +72,7 @@ async function getInstitutionDetail(npsn) {
       const tds = $(tr).find("td");
       if (tds.length >= 4) {
         const label = $(tds[1]).text().trim().replace(":", "");
-        let value =
-          $(tds[3]).text().trim() || $(tds[3]).find("a").text().trim();
+        let value = $(tds[3]).text().trim() || $(tds[3]).find("a").text().trim();
 
         value = cleanValue_(value);
 
@@ -112,13 +109,7 @@ async function getInstitutionDetail(npsn) {
   });
 
   // Save to cache
-  cache.setCache(
-    cacheKey.replace(
-      "*",
-      detail?.identitasSatuanPendidikan?.jenjangPendidikan || "unknown",
-    ),
-    detail,
-  );
+  cache.setCache(cacheKey.replace("*", detail?.identitasSatuanPendidikan?.jenjangPendidikan || "unknown"), detail);
 
   return {
     data: detail,

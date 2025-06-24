@@ -4,9 +4,7 @@ const config = require("../config");
 
 // Determine absolute path for the cache directory
 const rawDir = process.env.CACHE_DIR || "../.cache";
-const CACHE_DIR = path.isAbsolute(rawDir)
-  ? rawDir
-  : path.join(__dirname, rawDir);
+const CACHE_DIR = path.isAbsolute(rawDir) ? rawDir : path.join(__dirname, rawDir);
 
 // Create cache directory if needed
 if (config.CACHE_ENABLED && !fs.existsSync(CACHE_DIR)) {
@@ -47,12 +45,7 @@ function getFilePath_(key, useSubfolders = true) {
   const [topLevel, ...rest] = parts;
 
   // Fallback: if no subpath, use "index" as filename
-  const filename =
-    rest.length === 0
-      ? "index"
-      : useSubfolders
-        ? path.join(...rest)
-        : rest.join("-");
+  const filename = rest.length === 0 ? "index" : useSubfolders ? path.join(...rest) : rest.join("-");
 
   return path.join(CACHE_DIR, topLevel, filename + ".json");
 }
@@ -68,9 +61,7 @@ function tryReadCacheFile_(filePath) {
   if (!fs.existsSync(filePath)) return null;
 
   try {
-    const { data: data, timestamp: timestamp } = JSON.parse(
-      fs.readFileSync(filePath, "utf-8"),
-    );
+    const { data: data, timestamp: timestamp } = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
     if (Date.now() - timestamp > config.CACHE_TTL) {
       fs.unlinkSync(filePath); // Delete expired cache

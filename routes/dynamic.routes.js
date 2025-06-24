@@ -28,11 +28,7 @@ router.get(
     const targetUrl = `${config.BASE_URL}/pendidikan/${req.params.menu}/${req.params.areaId}/${req.params.levelId}`;
     const data = await getTableData(targetUrl, "#table1", req.apiBase);
     if (req.query.export === "csv") {
-      return csvExport(
-        res,
-        data,
-        `tabel-${req.params.menu}-${req.params.areaId}-${req.params.levelId}`,
-      );
+      return csvExport(res, data, `tabel-${req.params.menu}-${req.params.areaId}-${req.params.levelId}`);
     }
     res.json(data);
   }),
