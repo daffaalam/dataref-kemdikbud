@@ -4,9 +4,11 @@
   "description": "Scraping data from https://referensi.data.kemdikbud.go.id",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "format": "prettier . --write && eslint . --fix"
   },
-  "author": "",
+  "author": "daffaalam",
   "license": "UNLICENSED",
   "keywords": [],
   "type": "commonjs",
@@ -16,6 +18,10 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@eslint/js": "^9.29.0",
+    "eslint": "^9.29.0",
+    "globals": "^16.2.0",
+    "nodemon": "^3.1.10",
+    "prettier": "3.6.0"
   }
 }
